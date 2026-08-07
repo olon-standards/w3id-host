@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Property namespace — EU AI Act OSCAL</title>
+<meta name="description" content="Documentation for the property namespace https://w3id.org/eu-ai-act-oscal/ns, used by the OSCAL catalog of the EU Artificial Intelligence Act.">
+<style>
+  :root {
+    --bg: #fdfdfc; --fg: #1c1b19; --muted: #5f5c57; --rule: #e2e0dc;
+    --accent: #7a4b2a; --code-bg: #f4f2ee; --card: #ffffff;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #16151a; --fg: #e9e7e3; --muted: #a3a09a; --rule: #2e2c33;
+      --accent: #d9a066; --code-bg: #211f26; --card: #1d1c22;
+    }
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--fg);
+    font: 16px/1.65 ui-serif, Georgia, "Times New Roman", serif;
+    -webkit-text-size-adjust: 100%;
+  }
+  .wrap { max-width: 52rem; margin: 0 auto; padding: 3rem 1.25rem 5rem; }
+  h1 { font-size: 1.9rem; line-height: 1.2; margin: 0 0 .4rem; letter-spacing: -.01em; }
+  .sub { color: var(--muted); margin: 0 0 2rem; font-size: 1.05rem; }
+  h2 { font-size: 1.15rem; margin: 3rem 0 .75rem; letter-spacing: .02em;
+       text-transform: uppercase; font-family: ui-sans-serif, system-ui, sans-serif; }
+  h3 { font-size: 1rem; margin: 2rem 0 .5rem; font-family: ui-sans-serif, system-ui, sans-serif; }
+  a { color: var(--accent); text-underline-offset: .15em; }
+  code, .uri {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: .875em; background: var(--code-bg); padding: .12em .35em; border-radius: 3px;
+    overflow-wrap: anywhere;
+  }
+  pre { background: var(--code-bg); padding: 1rem 1.15rem; border-radius: 6px;
+        overflow-x: auto; font-size: .85rem; line-height: 1.5; }
+  pre code { background: none; padding: 0; font-size: inherit; }
+  .tablewrap { overflow-x: auto; margin: 1rem 0; }
+  table { border-collapse: collapse; width: 100%; font-size: .9rem;
+          font-family: ui-sans-serif, system-ui, sans-serif; }
+  th, td { text-align: left; padding: .5rem .7rem; border-bottom: 1px solid var(--rule);
+           vertical-align: top; }
+  th { font-size: .78rem; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); }
+  td code { white-space: nowrap; }
+  footer { margin-top: 4rem; padding-top: 1.25rem; border-top: 1px solid var(--rule);
+           color: var(--muted); font-size: .9rem; }
+  .note { border-left: 3px solid var(--accent); padding: .1rem 0 .1rem 1rem; margin: 1.5rem 0;
+          color: var(--muted); font-size: .95rem; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>Property namespace</h1>
+  <p class="sub"><span class="uri">https://w3id.org/eu-ai-act-oscal/ns</span></p>
+
+  <p>This namespace identifies the custom properties used by the
+  <a href="https://github.com/olon-standards/eu-ai-act-oscal">OSCAL catalog of the EU
+  Artificial Intelligence Act</a> — Regulation (EU) 2024/1689, as amended by Regulation
+  (EU) 2026/1744.</p>
+
+  <p><a href="https://pages.nist.gov/OSCAL/">OSCAL</a> lets a catalog attach named
+  properties to controls and groups. Properties that are not part of the OSCAL core
+  vocabulary must declare which vocabulary they belong to, via an <code>ns</code> value.
+  Every property this catalog defines carries the URI above, so a consumer can tell our
+  vocabulary apart from NIST's and from anyone else's.</p>
+
+  <div class="note">
+    This URI is an <strong>identifier, not a schema endpoint</strong>. It names the
+    vocabulary; it does not return a machine-readable schema document. Nothing should be
+    fetched from it at validation time.
+  </div>
+
+  <h2>How it appears</h2>
+  <p>Always inside an OSCAL <code>props</code> array:</p>
+<pre><code>{
+  "name":  "application-date",
+  "value": "2027-12-02",
+  "ns":    "https://w3id.org/eu-ai-act-oscal/ns"
+}</code></pre>
+
+  <h2>The vocabulary</h2>
+  <p>Thirty property names, grouped by what they are for. Value examples are taken from
+  the published v0.1.0 artifacts, not from intention.</p>
+
+  <h3>Locating an obligation in the Regulation</h3>
+  <div class="tablewrap">
+  <table>
+    <tr><th>Name</th><th>Meaning</th><th>Example values</th></tr>
+    <tr><td><code>chapter</code></td><td>Chapter of the Regulation.</td><td><code>I</code>, <code>II</code>, <code>III</code>, <code>IV</code>, <code>V</code>, <code>IX</code>, <code>XII</code></td></tr>
+    <tr><td><code>section</code></td><td>Section within the chapter.</td><td><code>1</code> … <code>5</code></td></tr>
+    <tr><td><code>article</code></td><td>Article, or a specific point within it.</td><td><code>6</code>, <code>4a</code>, <code>5(1)(a)</code></td></tr>
+    <tr><td><code>regulation</code></td><td>The instrument itself.</td><td><code>Regulation (EU) 2024/1689</code></td></tr>
+    <tr><td><code>regulation-short-title</code></td><td>Its common name.</td><td><code>Artificial Intelligence Act</code></td></tr>
+  </table>
+  </div>
+
+  <h3>Who an obligation falls on</h3>
+  <div class="tablewrap">
+  <table>
+    <tr><th>Name</th><th>Meaning</th><th>Example values</th></tr>
+    <tr><td><code>applies-to</code></td><td>Operator role(s) bound by the control. Comma-separated when more than one.</td><td><code>provider</code>, <code>deployer</code>, <code>importer</code>, <code>gpai-provider</code>, <code>all-operators</code>, <code>provider,deployer</code></td></tr>
+    <tr><td><code>risk-tier</code></td><td>Which risk regime the control belongs to.</td><td><code>prohibited</code>, <code>high-risk</code>, <code>transparency</code>, <code>gpai</code>, <code>gpai-systemic</code>, <code>all</code></td></tr>
+    <tr><td><code>operator-role</code></td><td>Role a template artefact is written for.</td><td><code>provider</code></td></tr>
+    <tr><td><code>risk-classification</code></td><td>Classification asserted by a template artefact.</td><td><code>high-risk (Article 6(2) / Annex III)</code></td></tr>
+    <tr><td><code>classification-basis</code></td><td>The legal basis for that classification.</td><td><code>Article 6(2) / Annex III</code></td></tr>
+    <tr><td><code>penalty-tier</code></td><td>Penalty band under Article 99.</td><td><code>art-99-3</code></td></tr>
+  </table>
+  </div>
+
+  <h3>When an obligation starts applying</h3>
+  <p>The Act applies in stages, and the 2026 amendment moved several of those dates. The
+  catalog keeps <strong>both</strong> the current date and the one it replaced, so a
+  reader can see that a date moved rather than having to know it did.</p>
+  <div class="tablewrap">
+  <table>
+    <tr><th>Name</th><th>Meaning</th><th>Example values</th></tr>
+    <tr><td><code>application-date</code></td><td>Date the obligation applies from, as currently in force.</td><td><code>2025-02-02</code>, <code>2025-08-02</code>, <code>2026-08-02</code>, <code>2027-12-02</code></td></tr>
+    <tr><td><code>application-date-original</code></td><td>The date before the amendment moved it.</td><td><code>2026-08-02</code></td></tr>
+    <tr><td><code>application-date-annex-i</code></td><td>Separate date for Annex I high-risk systems.</td><td><code>2028-08-02</code></td></tr>
+    <tr><td><code>application-date-annex-i-original</code></td><td>Its pre-amendment counterpart.</td><td><code>2027-08-02</code></td></tr>
+    <tr><td><code>application-date-status</code></td><td>Flags a date the Regulation does not settle. Present only where genuinely unresolved.</td><td><code>unresolved-see-docs-amendments</code></td></tr>
+    <tr><td><code>obligation-window</code></td><td>Date from which the duty must actually be met.</td><td><code>2025-02-02</code>, <code>2027-12-02</code></td></tr>
+    <tr><td><code>obligation-window-original</code></td><td>Its pre-amendment counterpart.</td><td><code>2026-08-02</code></td></tr>
+    <tr><td><code>later-obligation-window</code></td><td>A second, later deadline where one control carries two.</td><td><code>2026-12-02</code></td></tr>
+    <tr><td><code>marking-transition-window</code></td><td>Transition deadline for marking duties.</td><td><code>2026-12-02</code></td></tr>
+  </table>
+  </div>
+
+  <div class="note">
+    Three articles — 72, 73 and 86 — carry
+    <code>application-date-status: unresolved-see-docs-amendments</code>. That is
+    deliberate: the amended text does not settle them, and the catalog records the
+    open question instead of inventing an answer. The reasoning is in
+    <a href="https://github.com/olon-standards/eu-ai-act-oscal/blob/main/docs/AMENDMENTS.md"><code>docs/AMENDMENTS.md</code></a>.
+  </div>
+
+  <h3>What the 2026 amendment changed</h3>
+  <div class="tablewrap">
+  <table>
+    <tr><th>Name</th><th>Meaning</th><th>Example values</th></tr>
+    <tr><td><code>amended-by</code></td><td>Instrument that amended this provision.</td><td><code>Regulation (EU) 2026/1744</code></td></tr>
+    <tr><td><code>inserted-by</code></td><td>Instrument that inserted a provision that did not exist before.</td><td><code>Regulation (EU) 2026/1744</code></td></tr>
+    <tr><td><code>deferred-by</code></td><td>Instrument that pushed an application date back.</td><td><code>Regulation (EU) 2026/1744</code></td></tr>
+    <tr><td><code>amended-in-force</code></td><td>Date the amendment entered into force.</td><td><code>2026-07-27</code></td></tr>
+    <tr><td><code>amendment-in-force</code></td><td>Same meaning as <code>amended-in-force</code>. See the note below.</td><td><code>2026-07-27</code></td></tr>
+    <tr><td><code>consolidated-as-amended-by</code></td><td>Document-level marker: this artefact is the consolidated text.</td><td><code>Regulation (EU) 2026/1744</code></td></tr>
+  </table>
+  </div>
+
+  <div class="note">
+    <strong>Known duplication in v0.1.0.</strong> <code>amended-in-force</code> and
+    <code>amendment-in-force</code> carry the same meaning and the same value, and both
+    occur. Consumers reading either one should accept both. This is recorded here rather
+    than silently corrected, because the names are already present in a published
+    artefact; consolidating them is a breaking vocabulary change and belongs to a later
+    version.
+  </div>
+
+  <h3>Document-level markers</h3>
+  <div class="tablewrap">
+  <table>
+    <tr><th>Name</th><th>Meaning</th><th>Example values</th></tr>
+    <tr><td><code>control-count</code></td><td>Number of controls in the catalog.</td><td><code>50</code></td></tr>
+    <tr><td><code>structure-verified</code></td><td>Date the structure was last checked against the Regulation.</td><td><code>2026-07-27</code></td></tr>
+    <tr><td><code>document-status</code></td><td>Marks an artefact as an example rather than an assertion of fact.</td><td><code>template</code></td></tr>
+  </table>
+  </div>
+
+  <h2>Stability</h2>
+  <p>The namespace URI is permanent. Property <em>names</em> follow the catalog's
+  versioning: within a major version, names are added but not repurposed. A name that
+  changes meaning gets a new name.</p>
+
+  <h2>Other paths under this identifier</h2>
+  <div class="tablewrap">
+  <table>
+    <tr><th>Path</th><th>Resolves to</th></tr>
+    <tr><td><code>/eu-ai-act-oscal/ns</code></td><td>this page</td></tr>
+    <tr><td><code>/eu-ai-act-oscal/catalog</code></td><td>the catalog JSON</td></tr>
+    <tr><td><code>/eu-ai-act-oscal/profiles/{id}</code></td><td>a profile</td></tr>
+    <tr><td><code>/eu-ai-act-oscal/assessment-plans/{id}</code></td><td>an assessment plan</td></tr>
+    <tr><td><code>/eu-ai-act-oscal/examples/{id}</code></td><td>a template artefact</td></tr>
+    <tr><td><code>/eu-ai-act-oscal/v/{semver}/…</code></td><td>an immutable released version</td></tr>
+  </table>
+  </div>
+
+  <footer>
+    Source and issues:
+    <a href="https://github.com/olon-standards/eu-ai-act-oscal">olon-standards/eu-ai-act-oscal</a> ·
+    Licensed Apache-2.0 · Not legal advice.
+  </footer>
+
+</div>
+</body>
+</html>

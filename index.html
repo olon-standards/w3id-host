@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Permanent identifiers — olon-standards</title>
+<meta name="description" content="The resolution target for four w3id.org permanent identifier namespaces: EU AI Act OSCAL, ATO, CAES, and PAP.">
+<style>
+  :root {
+    --bg: #fdfdfc; --fg: #1c1b19; --muted: #5f5c57; --rule: #e2e0dc;
+    --accent: #7a4b2a; --code-bg: #f4f2ee; --card: #ffffff;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #16151a; --fg: #e9e7e3; --muted: #a3a09a; --rule: #2e2c33;
+      --accent: #d9a066; --code-bg: #211f26; --card: #1d1c22;
+    }
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--fg);
+    font: 16px/1.65 ui-serif, Georgia, "Times New Roman", serif;
+    -webkit-text-size-adjust: 100%;
+  }
+  .wrap { max-width: 46rem; margin: 0 auto; padding: 3rem 1.25rem 5rem; }
+  h1 { font-size: 1.9rem; line-height: 1.2; margin: 0 0 .4rem; letter-spacing: -.01em; }
+  .sub { color: var(--muted); margin: 0 0 2.5rem; font-size: 1.05rem; }
+  h2 { font-size: 1.15rem; margin: 3rem 0 .75rem; letter-spacing: .02em;
+       text-transform: uppercase; font-family: ui-sans-serif, system-ui, sans-serif; }
+  a { color: var(--accent); text-underline-offset: .15em; }
+  code, .uri {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: .875em; background: var(--code-bg); padding: .12em .35em; border-radius: 3px;
+    overflow-wrap: anywhere;
+  }
+  .ns { display: grid; gap: 1rem; padding: 0; margin: 0; list-style: none; }
+  .ns li {
+    background: var(--card); border: 1px solid var(--rule); border-radius: 6px;
+    padding: 1.1rem 1.25rem;
+  }
+  .ns h3 { margin: 0 0 .3rem; font-size: 1.05rem; }
+  .ns p { margin: .35rem 0 .6rem; color: var(--muted); font-size: .95rem; }
+  .uris { margin: 0; font-size: .9rem; }
+  .uris div { margin: .2rem 0; }
+  .uris span.label { color: var(--muted); display: inline-block; min-width: 7.5rem; }
+  footer { margin-top: 4rem; padding-top: 1.25rem; border-top: 1px solid var(--rule);
+           color: var(--muted); font-size: .9rem; }
+  .note { border-left: 3px solid var(--accent); padding: .1rem 0 .1rem 1rem; margin: 1.5rem 0;
+          color: var(--muted); font-size: .95rem; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>Permanent identifiers</h1>
+  <p class="sub">This site is the resolution target for four
+  <a href="https://w3id.org/">w3id.org</a> namespaces. It exists so those identifiers
+  keep working — permanently, and independently of where the underlying projects live.</p>
+
+  <h2>Why a separate site</h2>
+  <p>A <span class="uri">w3id.org</span> identifier is a promise that a name will outlive its
+  hosting. The promise is kept by a redirect: <span class="uri">w3id.org/&hellip;</span> points
+  here, and this site serves the vocabulary or document. Keeping that target separate from the
+  project repositories means a project can move, be renamed, or change hosts without breaking a
+  single published identifier — only the redirect changes.</p>
+
+  <p>This is a <strong>showcase, not a source</strong>. Every file under the four directories below
+  is generated from the corresponding project repository; nothing here is authored by hand. The
+  canonical copy of each artifact lives with its project.</p>
+
+  <h2>The four namespaces</h2>
+  <ul class="ns">
+
+    <li>
+      <h3>EU AI Act — OSCAL catalog</h3>
+      <p>A machine-readable NIST OSCAL rendering of the obligations of Regulation (EU) 2024/1689,
+      as amended by Regulation (EU) 2026/1744.</p>
+      <div class="uris">
+        <div><span class="label">Properties</span> <span class="uri">https://w3id.org/eu-ai-act-oscal/ns</span></div>
+        <div><span class="label">Catalog</span> <span class="uri">https://w3id.org/eu-ai-act-oscal/catalog</span></div>
+        <div><span class="label">Profiles</span> <span class="uri">https://w3id.org/eu-ai-act-oscal/profiles/{id}</span></div>
+        <div><span class="label">Licence</span> Apache-2.0</div>
+      </div>
+    </li>
+
+    <li>
+      <h3>ATO — Agentic Tools Observatory</h3>
+      <p>A FAIR / Linked-Open-Data registry and observability vocabulary for agentic-AI tools.</p>
+      <div class="uris">
+        <div><span class="label">Ontology</span> <span class="uri">https://w3id.org/ato/ns#</span></div>
+        <div><span class="label">Instances</span> <span class="uri">https://w3id.org/ato/id/{type}/{id}</span></div>
+        <div><span class="label">Taxonomy</span> <span class="uri">https://w3id.org/ato/scheme#</span></div>
+        <div><span class="label">Licence</span> code Apache-2.0 &middot; vocabulary CC-BY-4.0</div>
+      </div>
+    </li>
+
+    <li>
+      <h3>CAES — claims with provenance</h3>
+      <p>An open vocabulary for assertions that carry their own source, evidence, confidence and
+      supersession history. Resolution is optional, cacheable and offline-viable by design — never
+      a mandatory runtime dependency.</p>
+      <div class="uris">
+        <div><span class="label">Ontology</span> <span class="uri">https://w3id.org/caes/ns#</span></div>
+        <div><span class="label">Versioned</span> <span class="uri">https://w3id.org/caes/v1/{term}</span></div>
+        <div><span class="label">Durable form</span> <span class="uri">urn:caes:v1:type:{term}</span></div>
+      </div>
+    </li>
+
+    <li>
+      <h3>PAP — the Parallel Agent Protocol</h3>
+      <p>An open protocol for coordinating multiple autonomous agents over shared state: claims,
+      ownership, liveness and handover.</p>
+      <div class="uris">
+        <div><span class="label">Ontology</span> <span class="uri">https://w3id.org/pap-protocol/ns#</span></div>
+        <div><span class="label">Versioned</span> <span class="uri">https://w3id.org/pap-protocol/v1/{term}</span></div>
+        <div><span class="label">Licence</span> spec CC-BY-4.0 &middot; implementation Apache-2.0</div>
+      </div>
+    </li>
+
+  </ul>
+
+  <h2>Content negotiation</h2>
+  <p>The RDF vocabularies (ATO, CAES, PAP) answer an <span class="uri">Accept</span> header with
+  an HTTP <span class="uri">303 See Other</span> to the matching serialisation — Turtle, RDF/XML,
+  JSON-LD, N-Triples, or HTML documentation. A browser gets the documentation; a tool gets the
+  data. The OSCAL catalog is JSON and is served directly.</p>
+
+  <footer>
+    <p>Maintained by <a href="https://github.com/olon-standards">olon-standards</a> &middot;
+    <span class="uri">standards@olon.media</span></p>
+  </footer>
+
+</div>
+</body>
+</html>
